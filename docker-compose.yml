@@ -9,9 +9,12 @@ services:
       - '8080'
     deploy:
       replicas: 4
+    restart: always
   proxy:
     image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     ports: 
       - 8080:80
-    depends_on:
+    depends_on: 
       - my_app
