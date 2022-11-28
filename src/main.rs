@@ -55,7 +55,7 @@ fn handle_connection(mut stream: TcpStream) {
         }
     } else {
         // Forge HTTP 404 response
-        let response = format!("HTTP/1.1 404 NOT FOUND\r\n");
+        let response = format!("HTTP/1.1 404 NOT FOUND\r\n\r\n");
         match stream.write_all(response.as_bytes()) {
             Ok(_r) => (),
             // No panic
